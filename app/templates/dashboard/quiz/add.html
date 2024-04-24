@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Add Quiz{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="subject">Subject</label>
+    <input name="subject" id="subject" value="{{ request.form['subject'] }}" required>
+    <label for="date">Date</label>
+    <input name="date" id="date" value="{{ request.form['date'] }}" required>    
+    <label for="questions">Number of Questions</label>
+    <input name="questions" id="questions" value="{{ request.form['questions'] }}" required>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}
