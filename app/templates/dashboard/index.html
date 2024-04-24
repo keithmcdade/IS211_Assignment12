@@ -9,27 +9,23 @@
 
 {% block content %}
     <table>
-        <tr>
+        <thead>
+          <tr>
             <th>ID</th>
             <th>Name</th>
-        </tr><th>
-    </table>
-    <hr>
-  {% for student in students %}
-    <table class="post">
-        <tr>
-            <td>
-                <a class="action" href="{{ url_for('results.display_results', id=student['id']) }}">
-                {{ student['id'] }}
+          </tr>
+        </thead>
+        <tbody>  
+        {% for student in students %}
+          <tr>
+            <td>{{ student['id'] }}</td>
+            <td><a class="action" href="{{ url_for('results.display_results', id=student['id']) }}">
                 {{ student['first_name'] }}
-                {{ student['last_name'] }}</a>
-            </td>
-        </tr>
+                {{ student['last_name'] }}</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
     </table>
-    {% if not loop.last %}
-      <hr>
-    {% endif %}
-  {% endfor %}
 {% endblock %}
 
 {% block header2 %}
@@ -41,27 +37,28 @@
 
 {% block content2 %}
     <table>
-        <tr>
+        <thead>
+          <tr>
             <th>ID</th>
             <th>Subject</th>
             <th>Date</th>
             <th>Questions</th>
-        </tr>
-    </table>
-    <hr>
-    {% for quiz in quizzes %}
-      <table class="post">
-          <tr>
-              <td>{{ quiz['id'] }}</td>
-              <td>{{ quiz['subject'] }}</td>
-              <td>{{ quiz['date']}}</td>
-              <td>{{ quiz['questions']}}</td>
           </tr>
+        </thead>
+        <tbody>  
+        {% for quiz in quizzes %}
+          <tr>
+            <td>{{ quiz['id'] }}</td>
+            <td>{{ quiz['subject'] }}</td>
+            <td>{{ quiz['date']}}</td>
+            <td>{{ quiz['questions']}}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
       </table>
-      {% if not loop.last %}
-        <hr>
-      {% endif %}
-    {% endfor %}
+    {% if g.user %}
+    <p class="content"><a class="action" href="{{url_for('results.add_results') }}">Add Quiz Result</a></p>
+    {% endif %}
 {% endblock %}
 
 <!-- <td class="action" href="{{ url_for('results.display_results', id=student[id]) }}"> 

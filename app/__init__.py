@@ -41,6 +41,6 @@ def create_app(test_config=None):
     
     from . import results
     app.register_blueprint(results.bp)
-    app.add_url_rule('/results', view_func=results.display_results)
+    # app.add_url_rule('/results', view_func=results.display_results)
     
     return app

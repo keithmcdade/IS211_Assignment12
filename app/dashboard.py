@@ -13,15 +13,10 @@ bp = Blueprint('dashboard', __name__)
 @bp.route('/')
 def index():
     db = get_db()
-    students = db.execute(
-        'SELECT *'
-        'FROM students;'
-    ).fetchall()
-    quizzes = db.execute(
-        'SELECT "id", "subject", "date", "questions"'
-        'FROM quizzes;'
-    ).fetchall()
-    
+    student_sql = 'SELECT * FROM students;'
+    students = db.execute(student_sql).fetchall()
+    quizzes_sql = 'SELECT "id", "subject", "date", "questions" FROM quizzes;'
+    quizzes = db.execute(quizzes_sql).fetchall()
     return render_template('dashboard/index.html', students=students, quizzes=quizzes)
 
 

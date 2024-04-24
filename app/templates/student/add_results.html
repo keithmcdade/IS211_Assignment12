@@ -5,8 +5,23 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post">
-    <label for="scoree">Score</label>
+  <form method="post" class="content">
+    
+        <label for="students">Student</label>
+        <select name="students" id="students">
+        {% for student in students %}    
+          <option value="{{student['id']}}">{{student.first_name}} {{student.last_name}}</option>
+        {% endfor %}
+        </select>
+        <label for="quizzes">Quiz</label>
+        <select name="quizzes" id="quizzes">
+        {% for quiz in quizzes %}
+          <option value="{{quiz['id']}}">{{ quiz.subject }}</option>
+        {% endfor %}
+        </select>
+    
+    <br><br><br>
+    <label for="score">Score</label>
     <input name="score" id="score" value="{{ request.form['score'] }}" required>
     <input type="submit" value="Save">
   </form>

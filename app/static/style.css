@@ -32,3 +32,7 @@ nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
 
 input.danger { color: #cc2f2e; }
 input[type=submit] { align-self: start; min-width: 10em; }
+
+.content table {font-family: arial, sans-serif; border-collapse: collapse; width: 100%;}
+.content td, th {border: 1px solid #dddddd; text-align: left; padding: 8px;}
+.content tr:nth-child(even) {background-color: #dddddd7e;}
